@@ -6,11 +6,11 @@ import TextArea from './TextArea';
 
 export default class App extends Component {
 	constructor(props) {
-  	super(props);
-    
-    this.itemsList = {
-    	adjectives:["high","different","small","large","young"],
-    	cities:["Seoul","Shanghai","Sharm el-Sheikh","Shenzhen","Singapore"]
+        super(props);
+        
+        this.itemsList = {
+            adjectives:["high","different","small","large","young"],
+            cities:["Seoul","Shanghai","Sharm el-Sheikh","Shenzhen","Singapore"]
     };
     
     this.combinationsHistory = [];
@@ -35,6 +35,7 @@ export default class App extends Component {
     } while (this.indexOfIn2dArray(this.combinationsHistory, [randomNumber1, randomNumber2]) !== -1)
     
     this.combinationsHistory.push([randomNumber1, randomNumber2]);
+    
     this.props.handleChangeCurrentCity(
         this.capitalizeFirstLetter(this.itemsList.adjectives[randomNumber1]) +
         " " + this.itemsList.cities[randomNumber2]

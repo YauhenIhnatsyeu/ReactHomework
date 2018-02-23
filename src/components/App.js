@@ -9,8 +9,7 @@ export default class App extends Component {
   	super(props);
     
     this.state = {
-        currentItem: "",
-      generated: 0
+        
     }
     
     this.itemsList = {
@@ -40,13 +39,13 @@ export default class App extends Component {
     } while (this.indexOfIn2dArray(this.combinationsHistory, [randomNumber1, randomNumber2]) !== -1)
     
     this.combinationsHistory.push([randomNumber1, randomNumber2]);
-    this.setState({
-      currentItem: 
-        this.capitalizeFirstLetter(
-          this.itemsList.adjectives[randomNumber1])
-        + " " + this.itemsList.cities[randomNumber2],
-			generated: this.combinationsHistory.length
-    });
+    // this.setState({
+    //   currentItem: 
+    //     this.capitalizeFirstLetter(
+    //       this.itemsList.adjectives[randomNumber1])
+    //     + " " + this.itemsList.cities[randomNumber2],
+	// 		generated: this.combinationsHistory.length
+    // });
   }
   
   getRandomNumber(min, max) {
@@ -75,13 +74,13 @@ export default class App extends Component {
     return (
         <div className="app">
         <Button 
-        disabled={this.state.generated >= this.maxCombinations}
+        disabled={this.props.generated >= this.maxCombinations}
         onClick={this.handleButtonClick} />
         <Input text={this.state.currentItem} />
         <Text
-        generated={this.state.generated} 
+        generated={this.props.generated} 
         all={this.maxCombinations} />
-        <TextArea text={this.state.currentItem} rows={this.state.generated} />
+        <TextArea text={this.props.currentItem} rows={this.props.generated} />
         </div>
     );
   }

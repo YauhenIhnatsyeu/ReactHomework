@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+//import reducer from './reducers';
 import logo from './logo.svg';
 import './App.css';
 
 /* Eugene Ignatsyev, greatdoubletbpot@gmail.com */
+
+const initialState = [];
+
+function reducer(state = initialState, action){
+
+}
+
+const store = createStore(reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class Button extends React.Component {
 	render() {

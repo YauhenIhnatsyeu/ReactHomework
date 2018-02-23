@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 //import reducer from './reducers';
 import logo from './logo.svg';
 import './App.css';
@@ -13,8 +13,11 @@ function reducer(state = initialState, action){
 
 }
 
-const store = createStore(reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const enhancers = compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+);
+
+const store = createStore(reducer, initialState, enhancers);
 
 class Button extends React.Component {
 	render() {

@@ -7,9 +7,9 @@ export function getAddCity(city) {
     };
 }
 
-export function getChangeCity(city) {
+export function getChangeCurrentCity(city) {
     return {
-        type: actionTypes.CHANGE_CITY,
+        type: actionTypes.CHANGE_CURRENT_CITY,
         payload: city
     };
 }

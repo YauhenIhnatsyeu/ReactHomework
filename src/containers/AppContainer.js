@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getChangeCity } from '../actions/actionCreators';
+import { getChangeCurrentCity } from '../actions/actionCreators';
 import { getChangeGenerated } from '../actions/actionCreators';
 import App from '../components/App';
 import './AppContainer.css';
 
 const mapStateToProps = (state) => {
-    return { state: state.App };
+    console.log(state);
+    console.log(state.app);
+    return { 
+        app: state.app 
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        bindActionCreators({
+    return bindActionCreators({
+            handleChangeCurrentCity: getChangeCurrentCity,
             handleChangeGenerated: getChangeGenerated,
-            handleChangeCity: getChangeCity
         }, dispatch)
-    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

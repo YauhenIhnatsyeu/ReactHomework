@@ -8,9 +8,9 @@ export default class App extends Component {
 	constructor(props) {
   	super(props);
     
-    this.state = {
+    /*this.state = {
         
-    }
+    }*/
     
     this.itemsList = {
     	adjectives:["high","different","small","large","young"],
@@ -25,7 +25,7 @@ export default class App extends Component {
   }
   
   handleButtonClick() {
-  	if (this.state.generated >= this.maxCombinations)
+  	if (this.props.generated >= this.maxCombinations)
     	return;
   
   	let randomNumber1;
@@ -39,13 +39,11 @@ export default class App extends Component {
     } while (this.indexOfIn2dArray(this.combinationsHistory, [randomNumber1, randomNumber2]) !== -1)
     
     this.combinationsHistory.push([randomNumber1, randomNumber2]);
-    // this.setState({
-    //   currentItem: 
-    //     this.capitalizeFirstLetter(
-    //       this.itemsList.adjectives[randomNumber1])
-    //     + " " + this.itemsList.cities[randomNumber2],
-	// 		generated: this.combinationsHistory.length
-    // });
+    this.props.handleChangeCurrentCity(
+        this.capitalizeFirstLetter(this.itemsList.adjectives[randomNumber1]) +
+        " " + this.itemsList.cities[randomNumber2]
+    );
+    this.props.handleChangeGenerated(this.combinationsHistory.length);
   }
   
   getRandomNumber(min, max) {
@@ -63,24 +61,23 @@ export default class App extends Component {
       }
     }
     return -1;
-	}
+  }
   
   sqr(x) {
   	return x * x;
   }
 
   render() {
-    console.log(this.props.state);
     return (
         <div className="app">
-        <Button 
-        disabled={this.props.generated >= this.maxCombinations}
-        onClick={this.handleButtonClick} />
-        <Input text={this.state.currentItem} />
-        <Text
-        generated={this.props.generated} 
-        all={this.maxCombinations} />
-        <TextArea text={this.props.currentItem} rows={this.props.generated} />
+            <Button 
+                disabled={this.props.app.generated >= this.maxCombinations}
+                onClick={this.handleButtonClick} />
+            <Input text={this.props.app.currentCity} />
+            <Text
+                generated={this.props.app.generated} 
+                all={this.maxCombinations} />
+            <TextArea text={this.props.app.currentCity} rows={this.props.app.generated} />
         </div>
     );
   }

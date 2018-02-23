@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getChangeCurrentCity } from '../actions/actionCreators';
@@ -7,8 +6,6 @@ import App from '../components/App';
 import './AppContainer.css';
 
 const mapStateToProps = (state) => {
-    console.log(state);
-    console.log(state.app);
     return { 
         app: state.app 
     }

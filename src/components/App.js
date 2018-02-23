@@ -8,10 +8,6 @@ export default class App extends Component {
 	constructor(props) {
   	super(props);
     
-    /*this.state = {
-        
-    }*/
-    
     this.itemsList = {
     	adjectives:["high","different","small","large","young"],
     	cities:["Seoul","Shanghai","Sharm el-Sheikh","Shenzhen","Singapore"]

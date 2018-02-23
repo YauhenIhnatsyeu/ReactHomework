@@ -9,9 +9,9 @@ export default function appReducer(state = initialState, action) {
     switch (action.type) {
         case actionTypes.CHANGE_CURRENT_CITY:
             return {...state, currentCity: action.payload};
-            break;
         case actionTypes.CHANGE_GENERATED:
-            return {...state, generated: action.payload}
+            return {...state, generated: action.payload};
+        default:
+            return state;
     }
-    return state;
 }

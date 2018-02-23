@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import reducer1 from './reducer1';
-//import reducer2 from './reducer2';
+import button from './button';
+import app from './appReducer';
 
 export default combineReducers({
-    reducer1/*,
-    reducer2*/
+    button,
+    app
 });

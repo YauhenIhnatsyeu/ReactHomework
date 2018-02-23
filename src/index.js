@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import rootReducer from './reducers/index.js';
 import './index.css';
-import App from './containers/App';
+import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
 
 const defaultState = {};
@@ -17,7 +17,7 @@ const store = createStore(rootReducer, defaultState, enhancers);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <AppContainer />
     </Provider>, 
     document.getElementById('root')
 );

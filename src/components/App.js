@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import Text from '../components/Text';
-import TextArea from '../components/TextArea';
-import './App.css';
+import Button from './Button';
+import Input from './Input';
+import Text from './Text';
+import TextArea from './TextArea';
 
-class App extends Component {
+export default class App extends Component {
 	constructor(props) {
   	super(props);
     
     this.state = {
-    	currentItem: "",
+        currentItem: "",
       generated: 0
     }
     
@@ -72,28 +70,19 @@ class App extends Component {
   	return x * x;
   }
 
-	render() {
-  	return (
-    	<div className="app">
-    	  <Button 
-          disabled={this.state.generated >= this.maxCombinations}
-          onClick={this.handleButtonClick} />
+  render() {
+    console.log(this.props.state);
+    return (
+        <div className="app">
+        <Button 
+        disabled={this.state.generated >= this.maxCombinations}
+        onClick={this.handleButtonClick} />
         <Input text={this.state.currentItem} />
         <Text
-          generated={this.state.generated} 
-          all={this.maxCombinations} />
+        generated={this.state.generated} 
+        all={this.maxCombinations} />
         <TextArea text={this.state.currentItem} rows={this.state.generated} />
-    	</div>
+        </div>
     );
   }
 }
-
-const mapStateToProps = (state) => {
-    return { state };
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
